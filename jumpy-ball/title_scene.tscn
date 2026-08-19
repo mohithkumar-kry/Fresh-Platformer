@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dt85ehcd88wql"]
+
+[ext_resource type="Script" uid="uid://cpmfob8ppocmi" path="res://title_scene.gd" id="1_176dl"]
+[ext_resource type="Texture2D" uid="uid://bvocc607se0ek" path="res://michael dale.png" id="1_wkkv4"]
+
+[node name="title_screen" type="Node2D" unique_id=1970754696]
+script = ExtResource("1_176dl")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1304377126]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_wkkv4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=619751468]
+offset_left = 326.0
+offset_top = 218.0
+offset_right = 790.0
+offset_bottom = 474.0
+pivot_offset = Vector2(147, -94)
+
+[node name="Start game" type="Button" parent="VBoxContainer" unique_id=1242762489]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 25
+text = "START "
+
+[node name="settings" type="Button" parent="VBoxContainer" unique_id=146766960]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 25
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=829436991]
+layout_mode = 2
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 25
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/Start game" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
