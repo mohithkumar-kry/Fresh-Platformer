@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dbe70numiopab"]
+
+[ext_resource type="Script" uid="uid://nh4rypcy22jd" path="res://side_beam.gd" id="1_6ngyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4plyi"]
+size = Vector2(445, 16)
+
+[node name="Node2D" type="Area2D" unique_id=1319332945]
+script = ExtResource("1_6ngyd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1155043061]
+offset_left = 322.0
+offset_top = 286.0
+offset_right = 766.0
+offset_bottom = 301.0
+color = Color(1.540184e-06, 0.7523611, 0.7550251, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=239968203]
+position = Vector2(543.5, 294)
+shape = SubResource("RectangleShape2D_4plyi")

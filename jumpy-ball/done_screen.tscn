@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0ux3kyjxs73b"]
+
+[ext_resource type="Texture2D" uid="uid://crsd4pgx08vwq" path="res://michael dale (3).png" id="1_mioa6"]
+
+[node name="Node2D" type="Node2D" unique_id=1224656602]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=741378969]
+offset_right = 1154.0
+offset_bottom = 649.0
+texture = ExtResource("1_mioa6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect" unique_id=1899005636]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 182.0
+offset_right = 772.0
+offset_bottom = 222.0

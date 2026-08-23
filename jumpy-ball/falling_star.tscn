@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://pahrwowyn84w"]
+
+[ext_resource type="Texture2D" uid="uid://cu0dw5elgriwq" path="res://image-removebg-preview (2).png" id="1_0so8f"]
+[ext_resource type="Script" uid="uid://c4ro0kc51cgh3" path="res://falling_star.gd" id="1_g3p1r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4plyi"]
+radius = 32.0
+
+[node name="Node2D" type="Area2D" unique_id=723814307]
+script = ExtResource("1_g3p1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1297246580]
+position = Vector2(567, 283)
+scale = Vector2(0.6393443, 0.6388889)
+texture = ExtResource("1_0so8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1086704563]
+position = Vector2(565, 282)
+shape = SubResource("CircleShape2D_4plyi")
