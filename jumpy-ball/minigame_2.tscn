@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t0a3lur24rsn"]
 
 [ext_resource type="Script" uid="uid://1hrdmi2awkuj" path="res://minigame_2.gd" id="1_3qiw4"]
-[ext_resource type="Texture2D" uid="uid://crsd4pgx08vwq" path="res://michael dale (3).png" id="1_ksr4o"]
+[ext_resource type="Texture2D" uid="uid://ccyy5yr3yeg13" path="res://michael dale (5).png" id="2_3qiw4"]
 [ext_resource type="Texture2D" uid="uid://cu0dw5elgriwq" path="res://image-removebg-preview (2).png" id="2_vdqgs"]
 [ext_resource type="Script" uid="uid://b5p5udngdk4xt" path="res://button.gd" id="3_5x31c"]
 [ext_resource type="PackedScene" uid="uid://c2v5akya6rgww" path="res://ThemedTimer.tscn" id="4_3qiw4"]
@@ -12,7 +12,7 @@ script = ExtResource("1_3qiw4")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1220663484]
 offset_right = 1155.0
 offset_bottom = 646.0
-texture = ExtResource("1_ksr4o")
+texture = ExtResource("2_3qiw4")
 
 [node name="Button" type="TextureButton" parent="." unique_id=1441227370]
 offset_left = 152.0

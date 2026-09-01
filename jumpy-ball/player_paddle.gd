@@ -15,4 +15,4 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity.y = direction * speed
 	move_and_slide()
-	global_position.y = clamp(global_position.y, 60, screen_size.y - 60)rint("Player Y: ", global_position.y)
+	global_position.y = clamp(global_position.y, 60, screen_size.y - 60)

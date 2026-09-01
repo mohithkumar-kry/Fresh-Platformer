@@ -1,7 +1,26 @@
 [gd_scene format=3 uid="uid://dt85ehcd88wql"]
 
 [ext_resource type="Script" uid="uid://cpmfob8ppocmi" path="res://title_scene.gd" id="1_176dl"]
-[ext_resource type="Texture2D" uid="uid://bvocc607se0ek" path="res://michael dale.png" id="1_wkkv4"]
+[ext_resource type="Texture2D" uid="uid://dor8w2wlui010" path="res://1.png" id="2_8vtwa"]
+[ext_resource type="FontFile" uid="uid://bm8grus4d5gy5" path="res://Minecraft.ttf" id="3_uah43"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dysnt"]
+bg_color = Color(0.41960785, 0.6431373, 0.76862746, 1)
+border_width_top = 10
+border_color = Color(0.3137255, 0.4862745, 0.6117647, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nak2f"]
+bg_color = Color(0.41960785, 0.6431373, 0.76862746, 1)
+border_width_top = 10
+border_color = Color(0.3137255, 0.4862745, 0.6117647, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8mvp"]
+bg_color = Color(0.41960785, 0.6431373, 0.76862746, 1)
+border_width_top = 10
+border_color = Color(0.3137255, 0.4862745, 0.6117647, 1)
+border_blend = true
 
 [node name="title_screen" type="Node2D" unique_id=1970754696]
 script = ExtResource("1_176dl")
@@ -9,31 +28,38 @@ script = ExtResource("1_176dl")
 [node name="Background" type="TextureRect" parent="." unique_id=1304377126]
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_wkkv4")
+texture = ExtResource("2_8vtwa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=619751468]
-offset_left = 326.0
-offset_top = 218.0
-offset_right = 790.0
-offset_bottom = 474.0
+offset_left = 57.0
+offset_top = 251.0
+offset_right = 589.0
+offset_bottom = 399.0
 pivot_offset = Vector2(147, -94)
 
 [node name="Start game" type="Button" parent="VBoxContainer" unique_id=1242762489]
 layout_mode = 2
 theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_uah43")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_dysnt")
 text = "START "
+icon_alignment = 1
 
 [node name="settings" type="Button" parent="VBoxContainer" unique_id=146766960]
 layout_mode = 2
 theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_uah43")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_nak2f")
 text = "SETTINGS"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=829436991]
 layout_mode = 2
 theme_override_constants/outline_size = 14
-theme_override_font_sizes/font_size = 25
+theme_override_fonts/font = ExtResource("3_uah43")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_w8mvp")
 text = "QUIT"
 
 [connection signal="pressed" from="VBoxContainer/Start game" to="." method="_on_start_pressed"]

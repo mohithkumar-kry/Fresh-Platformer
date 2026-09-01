@@ -23,7 +23,7 @@ func _ready() -> void:
 # should be next. Make sure you name your minigame saves appropriately.
 
 	else:
-		get_tree().change_scene_to_file("res://scenes/title_screen.tscn") # changes your scene
+		get_tree().change_scene_to_file("res://Won_screen.tscn") # changes your scene
 	
 
 func _process(delta: float) -> void: # runs EVERY FRAME

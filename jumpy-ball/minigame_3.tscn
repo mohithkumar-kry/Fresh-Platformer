@@ -1,46 +1,59 @@
 [gd_scene format=3 uid="uid://bistl82tee7wm"]
 
 [ext_resource type="Script" uid="uid://dj37hhkp6rwhx" path="res://minigame_3.gd" id="1_1i1uu"]
-[ext_resource type="Texture2D" uid="uid://crsd4pgx08vwq" path="res://michael dale (3).png" id="1_5xr8p"]
-[ext_resource type="Script" uid="uid://c5r6oxsg88fk4" path="res://player.gd" id="2_33dbb"]
-[ext_resource type="Texture2D" uid="uid://c2v3koloro08u" path="res://image-removebg-preview.png" id="3_cdg48"]
+[ext_resource type="Texture2D" uid="uid://ccyy5yr3yeg13" path="res://michael dale (5).png" id="2_gqi5c"]
+[ext_resource type="PackedScene" uid="uid://kpih588iarkq" path="res://player.tscn" id="3_5xr8p"]
+[ext_resource type="PackedScene" path="res://mushroom.tscn" id="4_33dbb"]
+[ext_resource type="PackedScene" uid="uid://c2v5akya6rgww" path="res://ThemedTimer.tscn" id="5_cdg48"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6ngyd"]
-radius = 29.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ksd"]
+size = Vector2(1634, 56)
 
-[node name="ProjectileContainer" type="Node2D" unique_id=438927769]
+[node name="minigame_3" type="Node2D" unique_id=1081443874]
 script = ExtResource("1_1i1uu")
+spawn_y = 570.0
+spawn_x = 1100.0
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1874698921]
-offset_left = 2.0
-offset_top = -2.0
-offset_right = 1155.0
+[node name="Background" type="TextureRect" parent="." unique_id=857841406]
+offset_right = 1153.0
 offset_bottom = 650.0
-texture = ExtResource("1_5xr8p")
+texture = ExtResource("2_gqi5c")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1876177839]
-position = Vector2(363, 115)
-script = ExtResource("2_33dbb")
+[node name="baseplate" type="StaticBody2D" parent="." unique_id=597028418]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1048542428]
-position = Vector2(218, 183)
-scale = Vector2(0.9999999, 1)
-shape = SubResource("CircleShape2D_6ngyd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="baseplate" unique_id=2073838184]
+position = Vector2(650, 621)
+shape = SubResource("RectangleShape2D_t3ksd")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=1077072498]
-position = Vector2(215, 183)
-scale = Vector2(0.14571972, 0.1516484)
-texture = ExtResource("3_cdg48")
+[node name="ColorRect" type="ColorRect" parent="baseplate" unique_id=629762857]
+offset_left = -102.0
+offset_top = 594.0
+offset_right = 1275.0
+offset_bottom = 649.0
+color = Color(0.078431375, 0.20784314, 0.37254903, 1)
+metadata/_edit_use_anchors_ = true
 
-[node name="BattleBox" type="ColorRect" parent="." unique_id=2012155180]
-offset_left = 363.0
-offset_top = 115.0
-offset_right = 818.0
-offset_bottom = 513.0
-color = Color(1, 1, 1, 0.16862746)
+[node name="Player" parent="." unique_id=985050329 instance=ExtResource("3_5xr8p")]
+position = Vector2(583, 557)
 
-[node name="StarSpawner" type="Timer" parent="." unique_id=1584145544]
+[node name="MushroomSpawnTimer" type="Timer" parent="." unique_id=1754694199]
+wait_time = 1.5
+autostart = true
 
-[node name="BeamSpawner" type="Timer" parent="." unique_id=1717765592]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=529295226]
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
+[node name="HitsLabel" type="Label" parent="HUD" unique_id=1529727110]
+offset_right = 138.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 25
+
+[node name="StompsLabel" type="Label" parent="HUD" unique_id=909687487]
+offset_left = 3.0
+offset_top = 68.0
+offset_right = 134.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 25
+
+[node name="Mushroom" parent="." unique_id=1148536139 instance=ExtResource("4_33dbb")]
+
+[node name="ThemedTimer" parent="." unique_id=2002737115 instance=ExtResource("5_cdg48")]

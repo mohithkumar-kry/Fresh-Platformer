@@ -1,49 +1,69 @@
 extends Node2D
 
-@onready var star_spawner: Timer = $StarSpawner
-@onready var beam_spawner: Timer = $BeamSpawner
-@onready var container: Node2D = self
+const MUSHROOM_SCENE := preload("res://mushroom.tscn")
+const HITS_TO_LOSE := 3
+const STOMPS_TO_WIN := 10
 
-var falling_star_scene := preload("res://falling_star.tscn")
-var side_beam_scene := preload("res://side_beam.tscn")
+@onready var spawn_timer: Timer = $MushroomSpawnTimer
+@onready var hits_label: Label = $HUD/HitsLabel
+@onready var stomps_label: Label = $HUD/StompsLabel
+@onready var themed_timer: Node2D = $ThemedTimer
 
-var survive_time := 0.0
-var target_time := 20.0
+@export var spawn_y: float = 400.0
+@export var spawn_x: float = 900.0
+
+var hits := 0
+var stomps := 0
+var game_over := false
+var timer_end = false
 
 func _ready() -> void:
-	star_spawner.wait_time = 0.6
-	star_spawner.timeout.connect(_spawn_star)
-	star_spawner.start()
+	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	_update_hud()
+	await themed_timer.Timer(30.0)
+	timer_end = true 
+
+func _on_spawn_timer_timeout() -> void:
+	if game_over:
+		return
+	_spawn_mushroom()
+
+func _spawn_mushroom() -> void:
+	var m := MUSHROOM_SCENE.instantiate()
+	m.position = Vector2(spawn_x, spawn_y)
+	m.speed = randf_range(110.0, 190.0)
+	m.stomped.connect(_on_mushroom_stomped)
+	m.hit_player.connect(_on_mushroom_hit_player)
+	add_child(m)
+
+func _on_mushroom_stomped(_m) -> void:
+	if game_over:
+		return
+	stomps += 1
+	_update_hud()
 	
-	beam_spawner.wait_time = 1.2
-	beam_spawner.timeout.connect(_spawn_beam)
-	beam_spawner.start()
+func _on_mushroom_hit_player(_m) -> void:
+	if game_over:
+		return
+	hits += 1
+	_update_hud()
+	
+func _update_hud() -> void:
+	hits_label.text = "Hits: %d/%d" % [hits, HITS_TO_LOSE]
+	stomps_label.text = "Stomps: %d/%d" % [stomps, STOMPS_TO_WIN]
 
-func _spawn_star() -> void:
-	var star = falling_star_scene.instantiate()
-	star.global_position = Vector2(randf_range(420, 780), 190)  # spawn just above battle box
-	container.add_child(star)
-
-func _spawn_beam() -> void:
-	var beam = side_beam_scene.instantiate()
-	var from_left := randf() > 0.5
-	var y_pos = randf_range(220, 480)
-	if from_left:
-		beam.global_position = Vector2(390, y_pos)
-		beam.direction = 1.0
-	else:
-		beam.global_position = Vector2(810, y_pos)
-		beam.direction = -1.0
-	container.add_child(beam)
 
 func _process(delta: float) -> void:
-	survive_time += delta
 	
-	if survive_time >= target_time:
+	if stomps == 10:
 		if Global.minigames_done > 3:
-			get_tree().change_scene_to_file("res://done_screen.tscn")
+			get_tree().change_scene_to_file("res://Won_screen.tscn")
 		else:
 			get_tree().change_scene_to_file("res://timer_screen.tscn")
+	elif hits == 3:
+		get_tree().change_scene_to_file("res://timer_screen.tscn")
 	
-	if Global.lives <= 0:
+	if timer_end:
+		Global.lives -= 1
+		Global.minigames_done -=1
 		get_tree().change_scene_to_file("res://timer_screen.tscn")

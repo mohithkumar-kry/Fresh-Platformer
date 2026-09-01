@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://by2xhhu04tj5u"]
 
 [ext_resource type="Script" uid="uid://dn8qk2acty0e0" path="res://Themed_timer.gd" id="1_i7s1j"]
+[ext_resource type="FontFile" uid="uid://bm8grus4d5gy5" path="res://Minecraft.ttf" id="2_oujdy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc66t"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 4
+border_width_top = 7
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="ThemedTimer" type="Node2D" unique_id=2002737115]
 script = ExtResource("1_i7s1j")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1916096421]
-offset_left = 1064.0
+offset_left = 1033.0
 offset_top = -2.0
 offset_right = 1150.0
-offset_bottom = 38.0
+offset_bottom = 57.0
+theme_override_fonts/normal_font = ExtResource("2_oujdy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc66t")
